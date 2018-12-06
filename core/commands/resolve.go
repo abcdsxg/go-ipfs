@@ -74,11 +74,6 @@ Resolve the value of an IPFS DAG path:
 		cmdkit.StringOption(resolveDhtTimeoutOptionName, "dhtt", "Max time to collect values during DHT resolution eg \"30s\". Pass 0 for no timeout."),
 	},
 	Run: func(req *cmds.Request, res cmds.ResponseEmitter, env cmds.Environment) error {
-		api, err := cmdenv.GetApi(env)
-		if err != nil {
-			return err
-		}
-
 		n, err := cmdenv.GetNode(env)
 		if err != nil {
 			return err
@@ -89,6 +84,11 @@ Resolve the value of an IPFS DAG path:
 			if err != nil {
 				return err
 			}
+		}
+
+		api, err := cmdenv.GetApi(env)
+		if err != nil {
+			return err
 		}
 
 		name := req.Arguments[0]

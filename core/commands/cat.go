@@ -38,15 +38,15 @@ var CatCmd = &cmds.Command{
 			return err
 		}
 
-		api, err := cmdenv.GetApi(env)
-		if err != nil {
-			return err
-		}
-
 		if !node.OnlineMode() {
 			if err := node.SetupOfflineRouting(); err != nil {
 				return err
 			}
+		}
+
+		api, err := cmdenv.GetApi(env)
+		if err != nil {
+			return err
 		}
 
 		offset, _ := req.Options[offsetOptionName].(int64)
