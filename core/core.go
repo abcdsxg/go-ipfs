@@ -770,15 +770,6 @@ func (n *IpfsNode) loadID() error {
 	return nil
 }
 
-// GetKey will return a key from the Keystore with name `name`.
-func (n *IpfsNode) GetKey(name string) (ic.PrivKey, error) {
-	if name == "self" {
-		return n.PrivateKey, nil
-	} else {
-		return n.Repo.Keystore().Get(name)
-	}
-}
-
 func (n *IpfsNode) LoadPrivateKey() error {
 	if n.Identity == "" || n.Peerstore == nil {
 		return errors.New("loaded private key out of order")
