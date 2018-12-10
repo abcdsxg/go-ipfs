@@ -44,7 +44,7 @@ var CatCmd = &cmds.Command{
 			}
 		}
 
-		api, err := cmdenv.GetApi(env)
+		api, err := cmdenv.GetApi(env, req)
 		if err != nil {
 			return err
 		}

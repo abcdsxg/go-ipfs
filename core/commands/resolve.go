@@ -86,7 +86,7 @@ Resolve the value of an IPFS DAG path:
 			}
 		}
 
-		api, err := cmdenv.GetApi(env)
+		api, err := cmdenv.GetApi(env, req)
 		if err != nil {
 			return err
 		}

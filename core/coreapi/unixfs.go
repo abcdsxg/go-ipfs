@@ -15,7 +15,6 @@ import (
 	blockservice "gx/ipfs/QmVDTbzzTwnuBwNbJdhW3u7LoBQp46bezm9yp4z1RoEepM/go-blockservice"
 	ft "gx/ipfs/QmXAFxWtAB9YAMzMy9op6m95hWYu2CC5rmTsijkYL12Kvu/go-unixfs"
 	uio "gx/ipfs/QmXAFxWtAB9YAMzMy9op6m95hWYu2CC5rmTsijkYL12Kvu/go-unixfs/io"
-	offline "gx/ipfs/QmYZwey1thDTynSrvd6qQkX24UpTka6TFhQ2v569UpoqxD/go-ipfs-exchange-offline"
 	files "gx/ipfs/QmZMWMvWMVKCbHetJ4RgndbuEF1io2UpUxwQwtNjtYPzSC/go-ipfs-files"
 	mfs "gx/ipfs/QmZw3dco7GvZkuZ9pEHTHJ2DNXFxTtquraF3d2JYa5vP6q/go-mfs"
 	cidutil "gx/ipfs/QmbfKu17LbMWyGUxHEUns9Wf5Dkm8PT6be4uPhTkk4YvaV/go-cidutil"
@@ -70,10 +69,6 @@ func (api *UnixfsAPI) Add(ctx context.Context, files files.File, opts ...options
 		addblockstore = nilnode.Blockstore
 		exch = nilnode.Exchange
 		pinning = nilnode.Pinning
-	}
-
-	if settings.Local {
-		exch = offline.Exchange(addblockstore)
 	}
 
 	bserv := blockservice.New(addblockstore, exch) // hash security 001
